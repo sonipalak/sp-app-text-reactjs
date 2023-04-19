@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
-@import 'variables';
-@import 'mixins';
+@import 'custom-scss/mixins';
+@import 'custom-scss/variables';
+@import 'custom-scss/color';
 @import 'custom-scss/nav-header';
 *{padding: 0;margin: 0;box-sizing: border-box;}
 body{
@@ -8,29 +9,3 @@ body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
-
-.HoverDiv {
-    position: relative;
-    display: inline-block;
-    padding: 10px;
-    border: 1px solid black;
-  }
-  
-  .HoverDiv--hovered .HoverDiv__content {
-    opacity: 1;
-    visibility: visible;
-  }
-  
-  .HoverDiv__content {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    z-index: 1;
-    padding: 10px;
-    background-color: white;
-    border: 1px solid black;
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out;
-  }
-  
