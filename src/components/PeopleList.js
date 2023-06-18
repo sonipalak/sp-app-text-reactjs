@@ -7,10 +7,21 @@ const PeopleList = () => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    fetch('https://randomuser.me/api/?results=20&inc=name,picture,id,cell&nat=in')
+    fetch('https://randomuser.me/api/?results=100&inc=name,picture,id,cell&nat=in')
       .then((response) => response.json())
       .then((data) => {
-        setPeople(data.results);
+        const sortedPeople = data.results.sort((a, b) => {
+          const nameA = a.name.first.toLowerCase();
+          const nameB = b.name.first.toLowerCase();
+          if (nameA < nameB) {
+            return -1;
+          }
+          if (nameA > nameB) {
+            return 1;
+          }
+          return 0;
+        });
+        setPeople(sortedPeople);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -21,6 +32,10 @@ const PeopleList = () => {
 
   const handleSearch = (event) => {
     setSearchTerm(event.target.value);
+  };
+
+  const handleClick = (person) => {
+    console.log('Person Details:', person);
   };
 
   const filteredPeople = people.filter((person) =>
@@ -47,14 +62,13 @@ const PeopleList = () => {
             <p className='chat--status-text'>No people found</p>
           ) : (
             filteredPeople.map((person) => (
-              <li className='chat--item' key={person.id.value}>
+              <li className='chat--item' key={person.id.value} onClick={() => handleClick(person)}>
                 <div className='chat--item__left'>
                 <img src={person.picture.medium} alt={person.name.first} />
                 </div>
                 <div className='chat--item__right'>
-                  <h3>{`${person.name.title}, ${person.name.first} ${person.name.last}`}</h3>
-                  <p>{person.cell}</p>
-                  {/* <p>{person.id.value}</p> */}
+                  <h3>{`${person.name.first} ${person.name.last}`}</h3>
+                  <p>{person.cell} | {person.id.value}</p>
                 </div>
               </li>
             ))
