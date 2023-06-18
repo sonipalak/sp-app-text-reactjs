@@ -9,7 +9,7 @@ export default function ProfileFunction() {
     }
     return (
         <div>
-            <h3>Click Event</h3>
+            <h5>Click Event</h5>
             <button onClick={clickEvent}>Click Event</button>
         </div>
     )

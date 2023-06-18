@@ -27,33 +27,40 @@ export default class Profile extends React.Component{
             name: 'Palak State', 
             email: 'palak@gmail.com',
             count:0, 
-            show:true
+            show:true,
+            data: null
         }
+        console.warn("constructor")
     }
     updateState(){
         this.setState({
             name: 'Swara Profile',
             count: this.state.count+5,
+            
         })
     }
     clickEvent(){
         alert("Click Event Called")
     }
+    componentDidMount(){
+        console.warn("componentDidMount")
+    }
     render(){
+        console.warn("render")
         return(
             <div>
                 <h1>Profile: {this.state.name}</h1>
-                <h1>Count: {this.state.count}</h1>
-                <h2>Email: <a href={this.state.email}>{this.state.email}</a></h2>
+                <h2>Count: {this.state.count}</h2>
+                <h3>Email: <a href={this.state.email}>{this.state.email}</a></h3>
                 <button onClick={() => this.updateState()}>Update Name</button>
-                <h3>Show Hide</h3>
+                <h1>Show Hide</h1>
                 {
                     this.state.show ?
-                    <h2>Hide and Show Test</h2>
+                    <h4>Hide and Show Test</h4>
                     :null
                 }
                 <button onClick={() => this.setState({show:!this.state.show})}>Toggle Button</button>
-                <h3>Click Event</h3>
+                <h1>Click Event</h1>
                 <button onClick={()=>this.clickEvent()}>Click Event</button>
                 <button onClick={this.clickEvent.bind(this)}>Click Event with bind</button>
             </div>
