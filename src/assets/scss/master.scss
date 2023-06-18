@@ -1,1 +1,30 @@
 @import 'reset.scss';
+
+button{
+    background-color: $primary-800;
+    border:0;
+    color: $gray-100;
+    padding: 10px 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    margin: 0 10px;
+    &:hover{
+        background-color: $primary-600;
+    }
+}
+h1{
+    font-size: 42px;
+}
+h2{
+    font-size: 32px;
+}
+h3{
+    font-size: 22px;
+}
+h4{
+    font-size: 18px;
+}
+h5{
+    font-size: 16px;
+    font-weight: 800;
+}

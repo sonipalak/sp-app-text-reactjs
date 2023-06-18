@@ -1,11 +1,11 @@
 import './assets/scss/master.scss'
-
+import PeopleList from './components/PeopleList'
 
 function App() {
-
+  
   return (
     <div className="App">
-      <h1>Welcome to my app</h1>
+      <PeopleList />
     </div>
   );
 }
